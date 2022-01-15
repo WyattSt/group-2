@@ -25,13 +25,14 @@ class titleScreen(Frame):
         b4 = Button(self.master, text="Level 3")
         b4.grid(row=4, column=3)
 
-class Tutorial(Frame):
+class Tutorial(titleScreen):
     pass
 
 class levelOne(titleScreen):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.master = master
+
 
     def setupGUI(self):
         goal = Label(self.master, text="Goal: ")
@@ -43,8 +44,10 @@ class levelOne(titleScreen):
         turns = Label(self.master, text="Turns Left: ")
         turns.grid(row=6, sticky="nes")
 
+        
+
 class levelTwo(titleScreen):
-    def __init__(self, master):
+   def __init__(self, master):
         Frame.__init__(self, master)
         self.master = master
 
@@ -87,10 +90,10 @@ class levelThree(titleScreen):
 
 ##### MAIN PROGRAM #####
 window = Tk()
-title = titleScreen(window)
-title.setupGUI()
-##l1 = levelOne(window)
-##l1.setupGUI()
+##title = titleScreen(window)
+##title.setupGUI()
+l1 = levelOne(window)
+l1.setupGUI()
 ##l2 = levelTwo(window)
 ##l2.setupGUI()
 ##l3 = levelThree(window)
