@@ -33,6 +33,14 @@ class levelOne(titleScreen):
         Frame.__init__(self, master)
         self.master = master
 
+    def player():
+        pass
+
+    def stalker():
+        pass
+
+    def floorMaterials():
+        pass
 
     def setupGUI(self):
         goal = Label(self.master, text="Goal: ")
@@ -41,13 +49,11 @@ class levelOne(titleScreen):
         g1 = Label(self.master, text="Find Stalker")
         g1.grid(row=1, sticky="nes")
 
-        turns = Label(self.master, text="Turns Left: ")
+        turns = Label(self.master, text="Turns Left: {}".format(t))
         turns.grid(row=6, sticky="nes")
 
-        
-
 class levelTwo(titleScreen):
-   def __init__(self, master):
+    def __init__(self, master):
         Frame.__init__(self, master)
         self.master = master
 
@@ -87,6 +93,7 @@ class levelThree(titleScreen):
 
         turns = Label(self.master, text="Turns Left: ")
         turns.grid(row=6, sticky="nes")
+
 
 ##### MAIN PROGRAM #####
 window = Tk()
