@@ -32,44 +32,25 @@ class Tutorial(titleScreen):
     pass
 
 class levelOne(titleScreen):
-    def __init__(self, parent):
-        titleScreen.__init__(self, parent)
+    def __init__(self, master):
+        Frame.__init__(self, master)
+        self.master = master
 
-    def setupGUI(self):        
-        self.pack(fill=BOTH, expand=1)
+    def setupGUI(self):
+        img = PhotoImage(file="4X4.gif")
+        li = Label(self.master, image=img)
+        li.image = img
+        li.grid(row=0, column=0, columnspan=4, rowspan=4,\
+                sticky=N+S+E+W)
         
-        img = None
-        levelOne.image = Label(self, width=WIDTH // 2, image=img)
-        levelOne.image.image = img
-        levelOne.image.pack(side=LEFT, fill=Y)
-        levelOne.image.pack_propagate(False)
+        goal = Label(self.master, text="Goal: ")
+        goal.grid(row=0, column=6, sticky=N+E)
 
-        text_frame = Frame(self, width=WIDTH // 2)
-        levelOne.text = Text(text_frame, bg="lightgrey", state=DISABLED)
-        levelOne.text.pack(fill=Y, expand=1)
-        text_frame.pack(side=RIGHT, fill=Y)
-        text_frame.pack_propagate(False)
-
-    def setGridImage(self):
-        levelOne.img = PhotoImage(file="4X4.gif")
-
-        levelOne.image.config(image=levelOne.img)
-        levelOne.image.image = levelOne.img
-
-    def setStatus(self, turns):
-        turns = 0
-        levelOne.text.config(state=NORMAL)
-
-        levelOne.text.insert(END, "Level One." +\
-                             "\nGoals: " + "\nFind Stalker" +\
-                             "\n\nTurns Left: {}".format(turns))
-        levelOne.text.config(state=DISABLED)
+        g1 = Label(self.master, text="Find Stalker")
+        g1.grid(row=1, column=6, sticky=N+E)
         
-
-    def play(self):
-        self.setupGUI()
-        self.setGridImage
-        self.setStatus("")
+        turns = Label(self.master, text="Turns Left: ")
+        turns.grid(row=6, column=6, sticky=S+E)
     
 
 
@@ -136,7 +117,7 @@ window.title("The Invisible Stalker")
 ##title = titleScreen(window)
 ##title.setupGUI()
 l1 = levelOne(window)
-l1.play()
+l1.setupGUI()
 ##l2 = levelTwo(window)
 ##l2.setupGUI()
 ##l3 = levelThree(window)
