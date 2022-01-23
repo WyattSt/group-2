@@ -52,10 +52,13 @@ class levelOne(titleScreen):
         turns = Label(self.master, text="Turns Left: ")
         turns.grid(row=6, column=6, sticky=S+E)
     
-
-
     def player():
-        pass
+        def setupGUI(self):
+            img = PhotoImage(file="player.gif")
+            player = Label(self.master, image=img)
+            player.image = img
+            player.grid(row=random.randint(0, 4), column=random.randint(0, 4),\
+                   sticky=N+S+E+W)
 
     def stalker():
         pass
