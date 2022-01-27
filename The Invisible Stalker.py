@@ -54,7 +54,7 @@ class levelOne(titleScreen):
     
     def player():
         def setupGUI(self):
-            img = PhotoImage(file="player.gif")
+            img = PhotoImage(file="arrow.gif")
             player = Label(self.master, image=img)
             player.image = img
             player.grid(row=random.randint(0, 4), column=random.randint(0, 4),\
