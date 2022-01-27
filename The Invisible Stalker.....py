@@ -3,16 +3,15 @@ from random import randint
 
 def levelOne():
     root = Tk()
-    root.geometry("500x500")
 
     grid = PhotoImage(file = "4X4.gif")
-    player = PhotoImage(file = "arrow.gif")
+    player = PhotoImage(file = "arrow2.gif")
     turn = 0
 
     canvas1 = Canvas(root, width = 500, height = 500, bg="white")
     canvas1.pack(fill = "both", expand = True)
     canvas1.create_image(10, 10, image = grid, anchor = "nw")
-    canvas1.create_image(0, 0, image = player, anchor = "nw")
+    canvas1.create_image(10, 10, image = player, anchor = "nw")
     canvas1.create_text(400, 50, fill="black", font="Times 20", text="green = grass")
     canvas1.create_text(400, 100, fill="black", font="Times 20", text="brown = wood")
     canvas1.create_text(400, 200, fill="black", font="Times 20", text="Goals: ")
@@ -32,6 +31,7 @@ def levelOne():
 
     # This bind window to keys so that move is called when you press a key
     root.bind("<Key>", move)
+    turn += 1
 
     root.mainloop()
 
