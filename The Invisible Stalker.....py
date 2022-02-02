@@ -8,12 +8,14 @@ def levelOne():
     player = PhotoImage(file = "player.gif")
     stalker = PhotoImage(file = "stalker.gif")
     turn = 0
+    x = [25, 80, 135, 190]
+    y = [60, 115, 170, 225]
 
     canvas1 = Canvas(root, width = 500, height = 500, bg="white")
     canvas1.pack(fill = "both", expand = True)
     gridy = canvas1.create_image(10, 10, image = grid, anchor = "nw")
     image1 = canvas1.create_image(25, 60, image = player, anchor = "nw")
-    image2 = canvas1.create_image(randint(25, 190), randint(60, 225), image = stalker, anchor = "nw")
+    image2 = canvas1.create_image(randint(x), randint(y), image = stalker, anchor = "nw")
     canvas1.create_text(400, 50, fill="black", font="Times 20", text="green = grass")
     canvas1.create_text(400, 100, fill="black", font="Times 20", text="brown = wood")
     canvas1.create_text(400, 200, fill="black", font="Times 20", text="Goals: ")
