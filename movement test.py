@@ -8,9 +8,10 @@ canvas = tk.Canvas(root, width=800, height=800)
 canvas.pack() # this makes it visible
  
 # Loads and create image (put the image in the folder)
-img = tk.PhotoImage(file="stalker.gif")
+grid = tk.PhotoImage(file = "4X4.gif")
+img = tk.PhotoImage(file="arrow2.gif")
+gridy = canvas.create_image(10, 10, anchor=tk.NW, image=grid)
 image = canvas.create_image(10, 10, anchor=tk.NW, image=img)
- 
  
 def move(event):
     """Move the sprite image with a d w and s when click them"""
