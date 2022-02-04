@@ -15,7 +15,7 @@ def levelOne():
     canvas1.pack(fill = "both", expand = True)
     gridy = canvas1.create_image(10, 10, image = grid, anchor = "nw")
     image1 = canvas1.create_image(25, 60, image = player, anchor = "nw")
-    image2 = canvas1.create_image(randint(x), randint(y), image = stalker, anchor = "nw")
+    image2 = canvas1.create_image(x[randint(0, 3)], y[randint(0, 3)], image = stalker, anchor = "nw")
     canvas1.create_text(400, 50, fill="black", font="Times 20", text="green = grass")
     canvas1.create_text(400, 100, fill="black", font="Times 20", text="brown = wood")
     canvas1.create_text(400, 200, fill="black", font="Times 20", text="Goals: ")
