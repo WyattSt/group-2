@@ -23,9 +23,12 @@ def levelOne():
     canvas1.create_text(400, 400, fill="black", font="Times 20", text="Turns: {}".format(turn))
 
     def move(event):
+        x = [0, 55, -55]
+        y = [0, 55, -55]
         "Move the arrow with a d w and s when clicked "
         if event.char == "a":
             canvas1.move(image1, -55, 0)
+            canvas1.move(image2, x[randint(0, 2)], 0)
         elif event.char == "d":
             canvas1.move(image1, 55, 0)
         elif event.char == "w":
