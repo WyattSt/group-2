@@ -1,5 +1,6 @@
 from tkinter import *
 from random import randint
+import RPi.GPIO as GPIO
 
 def levelOne():
     root = Tk()
@@ -40,6 +41,9 @@ def levelOne():
     root.bind("<Key>", move)
 
     root.mainloop()
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(20, GPIO.IN, GPIO.PUD_DOWN)
 
 
 levelOne()
