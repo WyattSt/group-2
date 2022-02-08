@@ -19,9 +19,22 @@ class Game:
     def new(self):
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
-        self.player = Player(self, 0, 0)
-        for x in range(10, 20):
-            Wall(self, x, 5)
+        self.player = Player(self, 1, 1)
+
+        # BOUNDARIES
+        for x in range(0, 8):       
+            Wall(self, x, -1)       #top boundary
+
+        for x in range(0, 8):
+            Wall(self, x, 6)        #bottom boundary
+
+        for x in range(-1, 0):
+            for y in range(0,6):
+                Wall(self, x, y)    #left boundary
+
+        for x in range(8, 9):
+            for y in range(0, 6):
+                Wall(self, x, y)
 
     # Continually update whats on screen
     def run(self):
