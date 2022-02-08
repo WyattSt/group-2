@@ -31,6 +31,10 @@ class Player(pg.sprite.Sprite):
         self.rect.x = self.x * TILESIZE
         self.rect.y = self.y * TILESIZE
 
+        
+
+
+        
 # Defining the Stalker
 class Stalker(pg.sprite.Sprite):
     def __init__(self, game, x, y):

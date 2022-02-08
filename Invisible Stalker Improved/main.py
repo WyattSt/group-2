@@ -1,6 +1,6 @@
 import pygame as pg
 import sys
-from settings import *
+from settings import * 
 from sprites import *
 from os import path
 import random
@@ -50,7 +50,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.player = Player(self, 1, 1)
-        self.stalker = Stalker(self, random.randint(0,4), random.randint(0,4))
+        self.stalker = Stalker(self, random.choice([i for i in range(0,3) if i not in[1]]) , random.choice([i for i in range(0,3) if i not in [1]]))
 
         # BOUNDARIES
         for x in range(0, 4):       
@@ -106,6 +106,10 @@ class Game:
         self.draw_text('Turns Left: {}'.format(turn), self.hud_font, 50, WHITE, WIDTH - 80, 10, align="ne")
         if turn == 0:
             self.draw_text('Game Over: Out of Turns', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT - 125, align="center")
+        if self.player.rect.colliderect(self.stalker):
+            global stalker_found
+            stalker_found = 1
+            self.draw_text('Stalker Found!', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT - 125, align="center")
         pg.display.flip()
 
     # Take user input ( WASD for movement )
@@ -115,7 +119,8 @@ class Game:
                 self.quit()
             if event.type == pg.KEYDOWN:
                 global turn
-                if turn > 0:
+                global stalker_found
+                if turn > 0 and stalker_found == 0:
                     if event.key == pg.K_ESCAPE:
                         self.quit()
                     if event.key == pg.K_a:
@@ -139,6 +144,7 @@ class Game:
 # Start the game
 g = Game()
 turn = 20
+stalker_found = 0
 
 while True:
     g.new()
