@@ -44,19 +44,25 @@ class Game:
         self.player = Player(self, 1, 1)
 
         # BOUNDARIES
-        for x in range(0, 8):       
+        for x in range(0, 4):       
             Wall(self, x, -1)       #top boundary
 
-        for x in range(0, 8):
-            Wall(self, x, 6)        #bottom boundary
+        for x in range(0, 4):
+            Wall(self, x, 4)        #bottom boundary
 
         for x in range(-1, 0):
-            for y in range(0,6):
+            for y in range(0,4):
                 Wall(self, x, y)    #left boundary
 
+<<<<<<< HEAD
         for x in range(8, 9):       
             for y in range(0, 6):
                 Wall(self, x, y)    #right boundary
+=======
+        for x in range(4, 9):
+            for y in range(0, 4):
+                Wall(self, x, y)
+>>>>>>> db3815a736f5dee16d78a4b0ea6a1dbf9355b3e7
 
     # Continually update whats on screen
     def run(self):
@@ -78,9 +84,9 @@ class Game:
     # Draws a grid to help show tiles
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
-            pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
+            pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, GRIDx))
         for y in range(0, HEIGHT, TILESIZE):
-            pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
+            pg.draw.line(self.screen, LIGHTGREY, (0, y), (GRIDy, y))
 
     # Draw function
     def draw(self):
