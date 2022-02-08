@@ -3,7 +3,8 @@ import sys
 from settings import *
 from sprites import *
 from os import path
-from random import randint
+import random
+
 
 class Game:
     def __init__(self):
@@ -49,7 +50,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.player = Player(self, 1, 1)
-        self.stalker = Stalker(self, randint(0,4), randint(0,4))
+        self.stalker = Stalker(self, random.randint(0,4), random.randint(0,4))
 
         # BOUNDARIES
         for x in range(0, 4):       
@@ -119,15 +120,19 @@ class Game:
                         self.quit()
                     if event.key == pg.K_a:
                         self.player.move(dx = -1)
+                        self.stalker.move(dy = random.choice([-1, 1]))
                         turn += -1
                     if event.key == pg.K_d:
                         self.player.move(dx = 1)
+                        self.stalker.move(dx = random.choice([-1, 1]))
                         turn += -1
                     if event.key == pg.K_w:
                         self.player.move(dy = -1)
+                        self.stalker.move(dy = random.choice([-1, 1]))
                         turn += -1
                     if event.key == pg.K_s:
                         self.player.move(dy = 1)
+                        self.stalker.move(dx = random.choice([-1, 1]))
                         turn += -1
 
 
