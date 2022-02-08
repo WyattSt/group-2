@@ -3,6 +3,7 @@ import sys
 from settings import *
 from sprites import *
 from os import path
+from random import randint
 
 class Game:
     def __init__(self):
@@ -48,6 +49,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.player = Player(self, 1, 1)
+        self.stalker = Stalker(self, randint(0,4), randint(0,4))
 
         # BOUNDARIES
         for x in range(0, 4):       
@@ -100,9 +102,9 @@ class Game:
         self.screen.fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
-        self.draw_text('Turns Left: {}'.format(turn), self.hud_font, 50, WHITE, WIDTH - 10, 10, align="ne")
+        self.draw_text('Turns Left: {}'.format(turn), self.hud_font, 50, WHITE, WIDTH - 80, 10, align="ne")
         if turn == 0:
-            self.draw_text('Game Over: Out of Turns', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT/2, align="center")
+            self.draw_text('Game Over: Out of Turns', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT - 125, align="center")
         pg.display.flip()
 
     # Take user input ( WASD for movement )
