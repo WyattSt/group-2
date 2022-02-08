@@ -71,8 +71,6 @@ class Game:
                 Wall(self, x, y)
 
 
-
-
     # Continually update whats on screen
     def run(self):
         self.playing = True
@@ -102,7 +100,9 @@ class Game:
         self.screen.fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
-        self.draw_text('Turn:         ', self.hud_font, 50, WHITE, WIDTH - 10, 10, align="ne")
+        self.draw_text('Turns Left: {}'.format(turn), self.hud_font, 50, WHITE, WIDTH - 10, 10, align="ne")
+        if turn == 0:
+            self.draw_text('Game Over: Out of Turns', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT/2, align="center")
         pg.display.flip()
 
     # Take user input ( WASD for movement )
@@ -111,20 +111,27 @@ class Game:
             if event.type == pg.QUIT:
                 self.quit()
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    self.quit()
-                if event.key == pg.K_a:
-                    self.player.move(dx = -1)
-                if event.key == pg.K_d:
-                    self.player.move(dx = 1)
-                if event.key == pg.K_w:
-                    self.player.move(dy = -1)
-                if event.key == pg.K_s:
-                    self.player.move(dy = 1)
+                global turn
+                if turn > 0:
+                    if event.key == pg.K_ESCAPE:
+                        self.quit()
+                    if event.key == pg.K_a:
+                        self.player.move(dx = -1)
+                        turn += -1
+                    if event.key == pg.K_d:
+                        self.player.move(dx = 1)
+                        turn += -1
+                    if event.key == pg.K_w:
+                        self.player.move(dy = -1)
+                        turn += -1
+                    if event.key == pg.K_s:
+                        self.player.move(dy = 1)
+                        turn += -1
 
 
 # Start the game
 g = Game()
+turn = 20
 
 while True:
     g.new()
