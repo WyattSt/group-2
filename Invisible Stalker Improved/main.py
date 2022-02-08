@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from settings import *
 from sprites import *
+from os import path
 
 class Game:
     def __init__(self):
@@ -10,7 +11,12 @@ class Game:
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         pg.key.set_repeat(500, 100)
-        #self.load_data()
+        self.load_data()
+
+    def load_data(self):
+        game_folder = path.dirname(__file__)
+        img_folder = path.join(game_folder, 'img')
+        self.hud_font = path.join(img_folder, 'Quicksand-SemiBold.ttf')
 
     # function for drawing text on screen
     def draw_text(self, text, font_name, size, color, x, y, align="nw"):
@@ -48,21 +54,24 @@ class Game:
             Wall(self, x, -1)       #top boundary
 
         for x in range(0, 4):
-            Wall(self, x, 4)        #bottom boundary
+            for y in range(4, 6):
+                Wall(self, x, y)    #bottom boundary
 
         for x in range(-1, 0):
             for y in range(0,4):
                 Wall(self, x, y)    #left boundary
 
-<<<<<<< HEAD
+
         for x in range(8, 9):       
             for y in range(0, 6):
                 Wall(self, x, y)    #right boundary
-=======
+
         for x in range(4, 9):
-            for y in range(0, 4):
+            for y in range(0, 6):
                 Wall(self, x, y)
->>>>>>> db3815a736f5dee16d78a4b0ea6a1dbf9355b3e7
+
+
+
 
     # Continually update whats on screen
     def run(self):
@@ -93,6 +102,7 @@ class Game:
         self.screen.fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
+        self.draw_text('Turn:         ', self.hud_font, 50, WHITE, WIDTH - 10, 10, align="ne")
         pg.display.flip()
 
     # Take user input ( WASD for movement )
