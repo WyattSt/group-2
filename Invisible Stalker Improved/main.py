@@ -15,14 +15,15 @@ class Game:
     def load_data(self):
         pass
 
+    # For creating sprites, walls, etc.
     def new(self):
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
-        self.player = Player(self, 10, 10)
+        self.player = Player(self, 0, 0)
         for x in range(10, 20):
             Wall(self, x, 5)
 
-
+    # Continually update whats on screen
     def run(self):
         self.playing = True
         while self.playing:
@@ -31,6 +32,7 @@ class Game:
             self.update()
             self.draw()
 
+    # Quit Function
     def quit(self):
         pg.quit()
         sys.exit()
@@ -38,18 +40,21 @@ class Game:
     def update(self):
         self.all_sprites.update()
 
+    # Draws a grid to help show tiles
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
             pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, TILESIZE):
             pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
+    # Draw function
     def draw(self):
         self.screen.fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         pg.display.flip()
 
+    # Take user input ( WASD for movement )
     def events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -57,25 +62,20 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
-                if event.key == pg.K_LEFT:
+                if event.key == pg.K_a:
                     self.player.move(dx = -1)
-                if event.key == pg.K_RIGHT:
+                if event.key == pg.K_d:
                     self.player.move(dx = 1)
-                if event.key == pg.K_UP:
+                if event.key == pg.K_w:
                     self.player.move(dy = -1)
-                if event.key == pg.K_DOWN:
+                if event.key == pg.K_s:
                     self.player.move(dy = 1)
 
-    def show_start_screen(self):
-        pass
 
-    def show_go_screen(self):
-        pass
-
-# Start
+# Start the game
 g = Game()
-g.show_start_screen()
+
 while True:
     g.new()
     g.run()
-    g.show_go_screen()
+

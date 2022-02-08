@@ -1,3 +1,5 @@
+
+# Define any colors that we want to use
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)
@@ -6,13 +8,14 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
-# WINDOW SETTIGNS
+# Sets the size of the window
 WIDTH = 1024
 HEIGHT = 768
 FPS = 60
 TITLE = "The Invisible Stalker"
 BGCOLOR = DARKGREY
 
-TILESIZE = 32
+# Set size of the tiles
+TILESIZE = 128
 GRIDWIDTH = WIDTH/ TILESIZE
 GRIDHEIGHT = HEIGHT / TILESIZE
