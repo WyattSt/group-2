@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="4" nextobjectid="1">
+ <tileset firstgid="1" source="../../../../../../tilesheet_complete_2X.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="8" height="8">
+  <data encoding="csv">
+4,1,3,280,282,282,282,281,
+1,4,4,3221225784,43,43,43,309,
+2,2,4,43,43,1610613081,43,309,
+1,3,3,43,43,1610613079,43,309,
+2,3,3,312,43,43,43,309,
+4,3,2,307,282,282,282,308,
+4,4,4,4,1,1,4,4,
+1,4,4,4,1,1,1,1
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="8" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,2684355007,1610613218,0,
+0,0,0,0,0,2684355009,1610613216,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Tile Layer 3" width="8" height="8">
+  <data encoding="csv">
+0,0,213,0,0,0,0,0,
+210,0,0,0,0,0,0,0,
+9,9,9,0,0,0,1610613269,0,
+9,9,9,0,0,0,1610613268,0,
+9,9,0,0,0,0,241,0,
+9,9,240,0,0,0,0,0,
+9,9,0,0,0,0,0,134,
+9,9,235,0,0,210,0,0
+</data>
+ </layer>
+</map>

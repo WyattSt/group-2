@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.0" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="128" tileheight="128" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" source="../../../../../../tilesheet_complete_2X.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="6" height="6">
+  <data encoding="csv">
+3,2,1,3,3,47,
+2,2,3,3,43,45,
+4,7,7,7,47,47,
+7,7,7,7,45,43,
+7,7,4,3,47,47,
+7,1,1,3,1,43
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="6" height="6">
+  <data encoding="csv">
+0,0,0,0,134,0,
+0,210,0,0,241,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,210,0,319,
+0,240,0,0,0,0
+</data>
+ </layer>
+</map>
