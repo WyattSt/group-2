@@ -7,9 +7,8 @@ class Player(pg.sprite.Sprite):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self._layer = WALL_LAYER
         self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(BLUE)
+        self.image.fill(GREEN)
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -42,9 +41,8 @@ class Stalker(pg.sprite.Sprite):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self._layer = STALKER_LAYER
         self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(RED)
+        self.image.fill(YELLOW)
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -71,35 +69,8 @@ class Wall(pg.sprite.Sprite):
         self.groups = game.all_sprites, game.walls
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self._layer = WALL_LAYER
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(BLACK)
-        self.rect = self.image.get_rect()
-        self.x = x
-        self.y = y
-        self.rect.x = x * TILESIZE
-        self.rect.y = y * TILESIZE
-
-class Grass(pg.sprite.Sprite):
-    def __init__(self, game, x ,y):
-        self.groups = game.all_sprites, game.grass
-        pg.sprite.Sprite.__init__(self, self.groups)
-        self.game = game
-        self._layer = GRASS_LAYER
-        self.image = game.grass_img
-        self.rect = self.image.get_rect()
-        self.x = x
-        self.y = y
-        self.rect.x = x * TILESIZE
-        self.rect.y = y * TILESIZE
-
-class Wood(pg.sprite.Sprite):
-    def __init__(self, game, x ,y):
-        self.groups = game.all_sprites, game.wood
-        pg.sprite.Sprite.__init__(self, self.groups)
-        self.game = game
-        self._layer = WOOD_LAYER
-        self.image = game.wood_img
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
