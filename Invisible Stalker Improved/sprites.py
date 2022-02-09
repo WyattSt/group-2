@@ -8,7 +8,7 @@ class Player(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(GREEN)
+        self.image.fill(WHITE)
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -29,9 +29,7 @@ class Player(pg.sprite.Sprite):
     # Update player rect location
     def update(self):
         self.rect.x = self.x * TILESIZE
-        self.rect.y = self.y * TILESIZE
-
-        
+        self.rect.y = self.y * TILESIZE     
 
 
         
@@ -53,6 +51,14 @@ class Stalker(pg.sprite.Sprite):
                 return True
         return False
 
+    def grass_detection(self, dx = 0, dy = 0):
+        for grass in self.game.grass_tiles:
+            if grass.x == self.x and grass.y == self.y:
+                return True
+        False
+
+
+
     def update(self):
         self.rect.x = self.x * TILESIZE
         self.rect.y = self.y * TILESIZE
@@ -61,6 +67,9 @@ class Stalker(pg.sprite.Sprite):
         if not self.wall_collision(dx, dy):
             self.x += dx
             self.y += dy
+
+        if self.grass_detection(dx, dy):
+            print("test")
         
 
 # Defines what a wall is 
@@ -76,3 +85,19 @@ class Wall(pg.sprite.Sprite):
         self.y = y
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
+
+class Grass(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.grass_tiles
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.image = pg.Surface((TILESIZE, TILESIZE))
+        self.image.fill(GREEN)
+        self.rect = self.image.get_rect()
+        self.x = x
+        self.y = y
+        self.rect.x = x * TILESIZE
+        self.rect.y = y * TILESIZE
+
+
+

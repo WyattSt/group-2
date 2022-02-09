@@ -49,9 +49,9 @@ class Game:
     def new(self):
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
-        self.player = Player(self, 1, 1)
-        self.stalker = Stalker(self, random.choice([i for i in range(0,3) if i not in[1]]) , random.choice([i for i in range(0,3) if i not in [1]]))
-
+        self.grass_tiles = pg.sprite.Group()
+        self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
+        
         # BOUNDARIES
         for x in range(0, 4):       
             Wall(self, x, -1)       #top boundary
@@ -72,6 +72,13 @@ class Game:
         for x in range(4, 9):
             for y in range(0, 6):
                 Wall(self, x, y)
+
+        # GRASS PLACEMENT
+        for x in range(0, 4):
+            Grass(self, x, 0)
+
+        self.player = Player(self, 1, 1)
+
 
 
     # Continually update whats on screen
