@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from settings import * 
 from sprites import *
+from tilemap import *
 from os import path
 import random
 
@@ -18,6 +19,11 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
+        self.map = Map(path.join(game_folder, 'map1.txt'))
+        self.grass_img = pg.image.load(path.join(img_folder, GRASS_IMG)).convert_alpha()
+        self.grass_img = pg.transform.scale(self.grass_img, (TILESIZE,TILESIZE))
+        self.wood_img = pg.image.load(path.join(img_folder, WOOD_IMG)).convert_alpha()
+        self.wood_img = pg.transform.scale(self.wood_img, (TILESIZE,TILESIZE))
         self.hud_font = path.join(img_folder, 'Quicksand-SemiBold.ttf')
 
     # function for drawing text on screen
@@ -49,8 +55,16 @@ class Game:
     def new(self):
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
+        self.grass = pg.sprite.Group()
+        self.wood = pg.sprite.Group()
         self.player = Player(self, 1, 1)
         self.stalker = Stalker(self, random.choice([i for i in range(0,3) if i not in[1]]) , random.choice([i for i in range(0,3) if i not in [1]]))
+        for row, tiles in enumerate(self.map.data):
+            for col, tile in enumerate(tiles):
+                if tile == 'G':
+                    Grass(self, col, row)
+                if tile == 'W':
+                    Wood(self, col, row)
 
         # BOUNDARIES
         for x in range(0, 4):       

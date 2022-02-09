@@ -7,6 +7,7 @@ LIGHTGREY = (100, 100, 100)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
+BLUE = (0, 0, 255)
 
 # Sets the size of the window
 WIDTH = 1024
@@ -24,3 +25,5 @@ TILESIZE = 128
 GRIDWIDTH = GRIDx / TILESIZE
 GRIDHEIGHT = GRIDy / TILESIZE
 
+GRASS_IMG = 'tile_01.png'
+WOOD_IMG = 'tile_46.png'
