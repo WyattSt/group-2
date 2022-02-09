@@ -19,7 +19,10 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
-        self.map = Map(path.join(game_folder, 'map1.txt'))
+        map_folder = path.join(game_folder, 'maps')
+        self.map = TiledMap(path.join(map_folder, 'map1.tmx'))
+        self.map_img = self.map.make_map()
+        self.map_rect = self.map_img.get_rect()
         self.grass_img = pg.image.load(path.join(img_folder, GRASS_IMG)).convert_alpha()
         self.grass_img = pg.transform.scale(self.grass_img, (TILESIZE,TILESIZE))
         self.wood_img = pg.image.load(path.join(img_folder, WOOD_IMG)).convert_alpha()
@@ -59,14 +62,16 @@ class Game:
         self.wood = pg.sprite.Group()
         self.player = Player(self, 1, 1)
         self.stalker = Stalker(self, random.choice([i for i in range(0,3) if i not in[1]]) , random.choice([i for i in range(0,3) if i not in [1]]))
-        for row, tiles in enumerate(self.map.data):
-            for col, tile in enumerate(tiles):
-                if tile == 'G':
-                    Grass(self, col, row)
-                if tile == 'W':
-                    Wood(self, col, row)
-
-        # BOUNDARIES
+##        for row, tiles in enumerate(self.map.data):
+##            for col, tile in enumerate(tiles):
+##                if tile == 'G':
+##                    Grass(self, col, row)
+##                if tile == 'W':
+##                    Wood(self, col, row)
+        
+        
+##
+##        # BOUNDARIES
         for x in range(0, 4):       
             Wall(self, x, -1)       #top boundary
 
@@ -114,7 +119,8 @@ class Game:
 
     # Draw function
     def draw(self):
-        self.screen.fill(BGCOLOR)
+##        self.screen.fill(BGCOLOR)
+        self.screen.blit(self.map_img, (1,1))
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         self.draw_text('Turns Left: {}'.format(turn), self.hud_font, 50, WHITE, WIDTH - 80, 10, align="ne")

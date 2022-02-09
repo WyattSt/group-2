@@ -7,6 +7,7 @@ class Player(pg.sprite.Sprite):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
+        self._layer = WALL_LAYER
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(BLUE)
         self.rect = self.image.get_rect()
@@ -41,6 +42,7 @@ class Stalker(pg.sprite.Sprite):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
+        self._layer = STALKER_LAYER
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(RED)
         self.rect = self.image.get_rect()
@@ -69,6 +71,7 @@ class Wall(pg.sprite.Sprite):
         self.groups = game.all_sprites, game.walls
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
+        self._layer = WALL_LAYER
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(BLACK)
         self.rect = self.image.get_rect()
@@ -82,6 +85,7 @@ class Grass(pg.sprite.Sprite):
         self.groups = game.all_sprites, game.grass
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
+        self._layer = GRASS_LAYER
         self.image = game.grass_img
         self.rect = self.image.get_rect()
         self.x = x
@@ -94,6 +98,7 @@ class Wood(pg.sprite.Sprite):
         self.groups = game.all_sprites, game.wood
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
+        self._layer = WOOD_LAYER
         self.image = game.wood_img
         self.rect = self.image.get_rect()
         self.x = x
