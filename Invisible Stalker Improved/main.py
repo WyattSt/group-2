@@ -57,7 +57,7 @@ class Game:
         self.walls = pg.sprite.Group()
         self.wood_tiles = pg.sprite.Group()
         self.grass_tiles = pg.sprite.Group()
-        #self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
+        self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
         
         # WALL PLACEMENT
         for x in range(0, 4):       
@@ -131,7 +131,7 @@ class Game:
                 Grass(self, x, y)
                 
         self.player = Player(self, 1, 1)
-        self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
+        #self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
 
 
 
@@ -214,8 +214,13 @@ class Game:
             self.draw_text('Game Over: Out of Turns', self.hud_font, 50, WHITE, WIDTH/2, HEIGHT - 125, align="center")
         if self.player.rect.colliderect(self.stalker):
             global stalker_found
+            global objective
             stalker_found = 1
             self.draw_text('Stalker Found!', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT - 125, align="center")
+        self.draw_text("Objective: ", self.hud_font, 50, WHITE, WIDTH - 100, 90, align="ne")
+        if stalker_found == 1:
+            self.draw_text("", self.hud_font, 50, WHITE, WIDTH - 90, 150, align="ne")
+        else: self.draw_text("{}".format(objective), self.hud_font, 50, WHITE, WIDTH - 90, 150, align="ne")
         pg.display.flip()
 
     # Take user input ( WASD for movement )
@@ -257,6 +262,7 @@ g = Game()
 
 turn = 20
 stalker_found = 0
+objective = "Find Stalker"
 play_sound = True
 
 while True:
