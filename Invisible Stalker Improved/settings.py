@@ -12,8 +12,8 @@ WOOD = (93, 79, 57)
 DARKGREEN = (0, 100 ,0)
 
 # Sets the size of the window
-WIDTH = 1024
-HEIGHT = 768
+WIDTH = 782
+HEIGHT = 512
 FPS = 60
 TITLE = "The Invisible Stalker"
 BGCOLOR = DARKGREY
@@ -23,7 +23,7 @@ GRIDx = 512
 GRIDy = 512
 
 # Set size of the tiles
-TILESIZE = 128
+TILESIZE = 84
 GRIDWIDTH = GRIDx / TILESIZE
 GRIDHEIGHT = GRIDy / TILESIZE
 

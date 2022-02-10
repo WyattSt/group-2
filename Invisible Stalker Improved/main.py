@@ -57,7 +57,7 @@ class Game:
         self.walls = pg.sprite.Group()
         self.wood_tiles = pg.sprite.Group()
         self.grass_tiles = pg.sprite.Group()
-        self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
+        #self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
         
         # WALL PLACEMENT
         for x in range(0, 4):       
@@ -131,7 +131,7 @@ class Game:
                 Grass(self, x, y)
                 
         self.player = Player(self, 1, 1)
-        #self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
+        self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
 
 
 
@@ -211,7 +211,7 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.draw_text('Turns Left: {}'.format(turn), self.hud_font, 50, WHITE, WIDTH - 80, 10, align="ne")
         if turn == 0:
-            self.draw_text('Game Over: Out of Turns', self.hud_font, 70, WHITE, WIDTH/2, HEIGHT - 125, align="center")
+            self.draw_text('Game Over: Out of Turns', self.hud_font, 50, WHITE, WIDTH/2, HEIGHT - 125, align="center")
         if self.player.rect.colliderect(self.stalker):
             global stalker_found
             stalker_found = 1
