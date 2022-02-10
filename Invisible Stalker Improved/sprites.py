@@ -57,6 +57,11 @@ class Stalker(pg.sprite.Sprite):
                 return True
         False
 
+    def grass_detection(self, dx = 0, dy = 0):
+        for grass in self.game.grass_tiles:
+            if grass.x == self.x and grass.y == self.y:
+                return True
+        False
 
 
     def update(self):
@@ -84,6 +89,7 @@ class Wall(pg.sprite.Sprite):
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
 
+# Defining tiles (wood, grass, etc.)
 class Wood(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.wood_tiles
@@ -91,6 +97,19 @@ class Wood(pg.sprite.Sprite):
         self.game = game
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(WOOD)
+        self.rect = self.image.get_rect()
+        self.x = x
+        self.y = y
+        self.rect.x = x * TILESIZE
+        self.rect.y = y * TILESIZE
+
+class Grass(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.grass_tiles
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.image = pg.Surface((TILESIZE, TILESIZE))
+        self.image.fill(DARKGREEN)
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y

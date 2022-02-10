@@ -56,9 +56,10 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.wood_tiles = pg.sprite.Group()
+        self.grass_tiles = pg.sprite.Group()
         self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
         
-        # BOUNDARIES
+        # WALL PLACEMENT
         for x in range(0, 4):       
             Wall(self, x, -1)       #top boundary
 
@@ -80,9 +81,14 @@ class Game:
                 Wall(self, x, y)
 
         # WOOD PLACEMENT
+##        for x in range(0, 4):
+##            for y in range(0, 4):
+##                Wood(self, x ,y)
+
+        # GRASS PLACEMENT
         for x in range(0, 4):
-            for y in range(0, 4):
-                Wood(self, x ,y)
+            for y in range(0,4):
+                Grass(self, x , y)
                 
         self.player = Player(self, 1, 1)
         #self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
@@ -128,7 +134,28 @@ class Game:
             if (self.stalker.y == self.player.y + 1) and (self.stalker.x == self.player.x):
                 self.effects_sounds['woodbehind'].play()
                 play_sound = False
+                
+        # Stalker touches grass, play sound according to direction
 
+        if self.stalker.grass_detection() == True and play_sound == True:
+            if (self.stalker.y == self.player.y - 1) and (self.stalker.x == self.player.x):
+                self.effects_sounds['grassabove'].play()
+                play_sound = False
+                
+        if self.stalker.grass_detection() == True and play_sound == True:
+            if (self.stalker.y == self.player.y) and (self.stalker.x + 1 == self.player.x):
+                self.effects_sounds['grassleft'].play()
+                play_sound = False
+                
+        if self.stalker.grass_detection() == True and play_sound == True:
+            if (self.stalker.y == self.player.y) and (self.stalker.x - 1 == self.player.x):
+                self.effects_sounds['grassright'].play()
+                play_sound = False
+
+        if self.stalker.grass_detection() == True and play_sound == True:
+            if (self.stalker.y == self.player.y + 1) and (self.stalker.x == self.player.x):
+                self.effects_sounds['grassbehind'].play()
+                play_sound = False
 
     # Draws a grid to help show tiles
     def draw_grid(self):
