@@ -81,14 +81,54 @@ class Game:
                 Wall(self, x, y)
 
         # WOOD PLACEMENT
-##        for x in range(0, 4):
-##            for y in range(0, 4):
-##                Wood(self, x ,y)
+        for x in range(1, 4):
+            for y in range(1, 2):
+                Wood(self, x ,y)
+
+        for x in range(1, 4):
+            for y in range(3, 4):
+                Wood(self, x ,y)
+
+        for x in range(0,1):
+            for y in range(2,3):
+                Wood(self, x, y)
+
+        for x in range(2, 3):
+            for y in range(0,1):
+                Wood(self, x, y)
+
+        for x in range(2, 3):
+            for y in range(2,3):
+                Wood(self, x, y)
 
         # GRASS PLACEMENT
-        for x in range(0, 4):
-            for y in range(0,4):
-                Grass(self, x , y)
+        for x in range(0, 2):
+            for y in range(0,1):
+                Grass(self, x, y)
+
+        for x in range(0, 1):
+            for y in range(0,1):
+                Grass(self, x, y)
+
+        for x in range(0, 1):
+            for y in range(1,2):
+                Grass(self, x, y)
+                
+        for x in range(0, 1):
+            for y in range(3,4):
+                Grass(self, x, y)
+
+        for x in range(3, 4):
+            for y in range(0,1):
+                Grass(self, x, y)
+
+        for x in range(1, 2):
+            for y in range(2,3):
+                Grass(self, x, y)
+
+        for x in range(3, 4):
+            for y in range(2,3):
+                Grass(self, x, y)
                 
         self.player = Player(self, 1, 1)
         #self.stalker = Stalker(self, random.choice([i for i in range(0,4) if i not in[1]]) , random.choice([i for i in range(0,4) if i not in [1]]))
