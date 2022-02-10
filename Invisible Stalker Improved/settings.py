@@ -28,5 +28,6 @@ GRIDHEIGHT = GRIDy / TILESIZE
 
 # Audio
 BG_MUSIC = 'rats.ogg'
-EFFECTS_SOUNDS = {'woodabove': 'woodabove.wav'}
+EFFECTS_SOUNDS = {'woodabove': 'woodabove.wav', 'woodleft': 'woodleft.wav',
+                  'woodright': 'woodright.wav', 'woodbehind': 'woodbehind.wav'}
 
