@@ -69,7 +69,8 @@ class Stalker(pg.sprite.Sprite):
             self.y += dy
 
         if self.grass_detection(dx, dy):
-            print("test")
+            #self.effects_sound['woodabove'].play()
+            pass
         
 
 # Defines what a wall is 
@@ -92,7 +93,7 @@ class Grass(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(GREEN)
+        self.image.fill(WOOD)
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y

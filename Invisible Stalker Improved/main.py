@@ -18,7 +18,13 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
+        snd_folder = path.join(game_folder, 'snd')
+        music_folder = path.join(game_folder, 'music')
         self.hud_font = path.join(img_folder, 'Quicksand-SemiBold.ttf')
+        # Sound load
+        self.effects_sounds = {}
+        for type in EFFECTS_SOUNDS:
+            self.effects_sounds[type] = pg.mixer.Sound(path.join(snd_folder, EFFECTS_SOUNDS[type]))
 
     # function for drawing text on screen
     def draw_text(self, text, font_name, size, color, x, y, align="nw"):
@@ -97,6 +103,13 @@ class Game:
 
     def update(self):
         self.all_sprites.update()
+        # Stalker touches grass
+        global play_sound
+        if self.stalker.grass_detection() == True and play_sound == True:
+            self.effects_sounds['woodabove'].play()
+            play_sound = False
+
+
 
     # Draws a grid to help show tiles
     def draw_grid(self):
@@ -127,6 +140,7 @@ class Game:
             if event.type == pg.KEYDOWN:
                 global turn
                 global stalker_found
+                global play_sound
                 if turn > 0 and stalker_found == 0:
                     if event.key == pg.K_ESCAPE:
                         self.quit()
@@ -134,6 +148,7 @@ class Game:
                         self.player.move(dx = -1)
                         self.stalker.move(dy = random.choice([-1, 1]))
                         turn += -1
+                        play_sound = True
                     if event.key == pg.K_d:
                         self.player.move(dx = 1)
                         self.stalker.move(dx = random.choice([-1, 1]))
@@ -150,8 +165,10 @@ class Game:
 
 # Start the game
 g = Game()
+
 turn = 20
 stalker_found = 0
+play_sound = True
 
 while True:
     g.new()
