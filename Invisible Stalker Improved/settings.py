@@ -27,6 +27,7 @@ GRIDHEIGHT = GRIDy / TILESIZE
 
 GRASS_IMG = 'tile_01.png'
 WOOD_IMG = 'tile_46.png'
+NOBG_IMG = 'nobg.png'
 
 PLAYER_LAYER = 2
 STALKER_LAYER = 2

@@ -43,8 +43,7 @@ class Stalker(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self._layer = STALKER_LAYER
-        self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(RED)
+        self.image = game.nobg_img
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
