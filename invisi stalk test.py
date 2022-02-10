@@ -29,25 +29,39 @@ def create_animation_canvas(Window):
   canvas.configure(bg="White")
   canvas.pack(fill="both", expand=True)
   return canvas
- 
-
-def animate_player(Window, canvas,xinc,yinc):
+  grid = PhotoImage(file = "4X4.gif")
+  gridy = canvas.create_image(10, 10, image = grid, anchor = "nw")
+  Gridx1 = 25
+  Gridx2 = 190
+  Gridy1 = 60
+  Gridy2 = 225
+  
+def animate_player(Window, canvas):
+  x = [-55, 55]
+  y = [-55, 55]
   player = PhotoImage(file = "player.gif")
   canvas.create_image(25, 60, image = player, anchor = "nw")
-  
-  while True:
-    canvas.move(player,xinc,yinc)
+  def move(event):
+    while True:
+      if event.char == "a":
+        canvas.move(player, -55, 0)
+      elif event.char == "d":
+        canvas.move(player, 55, 0)
+      elif event.char == "w":
+        canvas.move(player, 0, -55)
+      elif event.char == "s":
+        canvas.move(player, 0, 55)
     Window.update()
     player_pos = canvas.coords(player)
     # unpack array to variables
     al,bl,ar,br = player_pos
-    if al < abs(xinc) or ar > Window_Width-abs(xinc):
+    if al <= Gridx2 or ar >= Gridx1:
       xinc = -xinc
-    if bl < abs(yinc) or br > Window_Height-abs(yinc):
+    if bl <= Gridy2 or br >= Gridy1:
       yinc = -yinc
  
 
 Animation_Window = create_animation_window()
 Animation_canvas = create_animation_canvas(Animation_Window)
-animate_player(Animation_Window,Animation_canvas, Player_min_movement, Player_min_movement)
+animate_player(Animation_Window, Animation_canvas)
 

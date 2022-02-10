@@ -160,8 +160,32 @@ class Game:
                         self.stalker.move(dx = random.choice([-1, 1]))
                         turn += -1
 
+class MyImage:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.images = ["image_one", "image_two"]
+        self.c = 0
 
+    def onSpace(self):
+        self.c = (self.c + 1) % len(self.images)
+
+    def get_image(self):
+        return self.images[self.c]
+
+test_image = MyImage(50, 50)
+
+stopped = False
+while stopped == False:
+    events = pygame.event.get()
+    for event in events:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                test_image.onSpace()
+
+screen.blit(test_image.get_image(), (test_image.x, test_image.y))
 # Start the game
+MyImage()
 g = Game()
 turn = 20
 stalker_found = 0
